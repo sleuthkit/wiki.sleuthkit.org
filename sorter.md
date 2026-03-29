@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Sorter"
+title: "sorter"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Sorter/"
   - "/index.php/Sorter"
+  - "/index.php/sorter"
   - "/wiki/Sorter"
+  - "/wiki/sorter"
 
 last_modified: 2008-09-12
 ---

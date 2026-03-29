@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Hfind"
+title: "hfind"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Hfind/"
   - "/index.php/Hfind"
+  - "/index.php/hfind"
   - "/wiki/Hfind"
+  - "/wiki/hfind"
 
 last_modified: 2014-02-12
 ---

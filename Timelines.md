@@ -24,7 +24,7 @@ Other logs and sources of data may also have temporal data. For example, event l
 At a high level, generation is a two step process.  In the first step, temporal data is gathered from various data sources (such as file systems, registries, logs, etc.) and saved to the [body file](/Body-file/) format.  This step is done using the 'fls' tool in TSK or other tools, which are listed below. The second step is to sort and merge all of the temporal data into a single timeline.  This step is done using the 'mactime' script in TSK. 
 
 ## Data Gathering
-The primary method for collecting temporal data from file systems is to run [fls](/Fls/) with the '-m' flag. With version 1.X and 2.X of TSK, you also had to run the [ils](/Ils/) command to get all unallocated files, but that is no longer required. 
+The primary method for collecting temporal data from file systems is to run [fls](/fls/) with the '-m' flag. With version 1.X and 2.X of TSK, you also had to run the [ils](/ils/) command to get all unallocated files, but that is no longer required. 
 
 The 'fls' command requires the '-m' argument with the '-r' flag to gather all files.  This step walks through the directory hierarchy and outputs a line for each file in the file system.  This command needs to be run for each partition in a disk image. 
 
@@ -43,7 +43,7 @@ An example of an OpenBSD system with two partitions could be:
 
 The time skew of the system can also be taken into consideration during this step. Using the '-s' argument to 'fls', the body file can have the adjusted times so that the system is consistent with other servers.
 
-NOTE: This replaces the actions of 'grave-robber -m' in TCT.  The [mac-robber](/Mac-robber/) tool (on the www.sleuthkit.org web site) can also be used to gather allocated file data on a mounted file system. 'mac-robber' is useful for file systems where tools do not exist (such as AIX jfs).
+NOTE: This replaces the actions of 'grave-robber -m' in TCT.  The [mac-robber](/mac-robber/) tool (on the www.sleuthkit.org web site) can also be used to gather allocated file data on a mounted file system. 'mac-robber' is useful for file systems where tools do not exist (such as AIX jfs).
  
 Any data with times can be converted to the format needed by mactime. I have created scripts to convert log files to the format before so that all data was in a single timeline. 
 
@@ -51,7 +51,7 @@ Other scripts that are written to convert data to the mactime format include:
 * Add here...
 
 ## Timeline Creation
-When all of the temporal data has been merged into a single [body file](/Body-file/), the data can be sorted based on the times.  The [mactime](/Mactime/) program does that. 
+When all of the temporal data has been merged into a single [body file](/Body-file/), the data can be sorted based on the times.  The [mactime](/mactime/) program does that. 
 
 The [Zeitline](http://projects.cerias.purdue.edu/forensics/timeline.php) tool also imports the same data format and has a more graphical display. 
 

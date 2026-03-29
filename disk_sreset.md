@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Disk sreset"
+title: "disk_sreset"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Disk-sreset/"
   - "/index.php/Disk_sreset"
+  - "/index.php/disk_sreset"
   - "/wiki/Disk_sreset"
+  - "/wiki/disk_sreset"
 
 last_modified: 2010-10-28
 ---

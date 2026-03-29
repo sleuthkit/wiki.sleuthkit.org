@@ -1,14 +1,17 @@
 ---
 layout: default
-title: "Blkstat"
+title: "blkstat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Blkstat/"
   - "/index.php/Blkstat"
   - "/index.php/Dstat"
+  - "/index.php/blkstat"
   - "/wiki/Blkstat"
   - "/wiki/Dstat"
+  - "/wiki/blkstat"
 
 last_modified: 2010-01-04
 ---

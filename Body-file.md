@@ -11,7 +11,7 @@ redirect_from:
 last_modified: 2009-04-27
 ---
 
-The body file is an intermediate file when creating a [timeline](/Timeline/) of file activity.  It is a pipe ("|") delimited text file that contains one line for each file (or other even type, such as a log or registry key). The [fls](/Fls/), [ils](/Ils/), and [mac-robber](/Mac-robber/) tools all output this data format.   The [mactime](/Mactime/) tool reads this file and sorts the contents (therefore the format is sometimes referred to as the "mactime format"). 
+The body file is an intermediate file when creating a [timeline](/Timeline/) of file activity.  It is a pipe ("|") delimited text file that contains one line for each file (or other even type, such as a log or registry key). The [fls](/fls/), [ils](/ils/), and [mac-robber](/mac-robber/) tools all output this data format.   The [mactime](/mactime/) tool reads this file and sorts the contents (therefore the format is sometimes referred to as the "mactime format"). 
 
 The body file format in TSK 3.0+ is different from the format used in TSK 1.X and 2.X. 
 

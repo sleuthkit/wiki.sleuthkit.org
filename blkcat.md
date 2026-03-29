@@ -1,14 +1,17 @@
 ---
 layout: default
-title: "Blkcat"
+title: "blkcat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Blkcat/"
   - "/index.php/Blkcat"
   - "/index.php/Dcat"
+  - "/index.php/blkcat"
   - "/wiki/Blkcat"
   - "/wiki/Dcat"
+  - "/wiki/blkcat"
 
 last_modified: 2010-01-04
 ---

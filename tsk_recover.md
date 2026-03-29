@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Tsk recover"
+title: "tsk_recover"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Tsk-recover/"
   - "/index.php/Tsk_recover"
+  - "/index.php/tsk_recover"
   - "/wiki/Tsk_recover"
+  - "/wiki/tsk_recover"
 
 last_modified: 2010-10-28
 ---

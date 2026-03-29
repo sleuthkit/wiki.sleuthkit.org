@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Img cat"
+title: "img_cat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Img-cat/"
   - "/index.php/Img_cat"
+  - "/index.php/img_cat"
   - "/wiki/Img_cat"
+  - "/wiki/img_cat"
 
 last_modified: 2008-09-12
 ---

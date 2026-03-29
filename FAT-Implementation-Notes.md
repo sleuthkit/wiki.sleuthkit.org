@@ -41,9 +41,9 @@ non-"data area" sectors.
 
 This problem was solved by making the sector as the addressable
 unit, instead of the cluster.  When a file is described (using
-[istat](/Istat/) for example), the sector addresses are given.   In the
-output of [fsstat](/Fsstat/), the File Allocation Table contents are displayed
-in sectors and when using [blkls](/Blkls/) -l, the sector status is given.
+[istat](/istat/) for example), the sector addresses are given.   In the
+output of [fsstat](/fsstat/), the File Allocation Table contents are displayed
+in sectors and when using [blkls](/blkls/) -l, the sector status is given.
 
 This actually makes manual data recovery easier because one can
 use 'dd' to carve out data using the sector addresses.  If clusters
@@ -55,7 +55,7 @@ FAT describes its files in a directory entry structure, which is
 contained in the sectors allocated by the parent directory.  The
 directory entry structures have a fixed size of 32-bytes, not
 addressed, and can exist anywhere in the partition.  The Sleuth
-Kit needs some form of [Metadata Address](/Metadata-Address/) for each file, 
+Kit needs some form of [Metadata Address](/Metadata-address/) for each file, 
 so this became a problem.  Also, the root directory does not have
 a directory entry.  In other words, there is no descriptive
 information for the root directory.
@@ -85,10 +85,10 @@ If the tool displays the time in a nice ASCII format, the same
 timezone will be used to translate the offset value into a date.
 Therefore, you can use any timezone value and the time will not
 change (just the timezone name). On the other hand, if you use a
-tool such as [ils](/Ils/) or [fls](/Fls/) -m, which display the time in the offset
+tool such as [ils](/ils/) or [fls](/fls/) -m, which display the time in the offset
 format, then it will have the offset of the current timezone or
 the one specified with '-z'.  Therefore, ensure that the same '-z'
-argument is used with [mactime](/Mactime/) to display the correct time in
+argument is used with [mactime](/mactime/) to display the correct time in
 the [timeline](/Timeline/).
 
 # General Notes on Time

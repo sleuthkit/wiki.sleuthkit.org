@@ -17,37 +17,37 @@ This page provides an overview of the command line tools in TSK.  The TSK tools 
 ## Fully Automated Tools
 These tools integrate the volume and file system functionality.  Instead of analyzing only a single file system, these tools take a disk image as input and identify the volumes and process the contents. 
 * [tsk_comparedir](/tsk_comparedir/): Compares a local directory hierarchy with the contents of raw device (or disk image). This can be used to detect rootkits. 
-* [tsk_gettimes](/tsk_gettimes/): Extracts all of the temporal data from the image to make a [timeline](/Timeline/).  Equivalent to running [fls](/Fls/) with the '-m' option. 
+* [tsk_gettimes](/tsk_gettimes/): Extracts all of the temporal data from the image to make a [timeline](/Timeline/).  Equivalent to running [fls](/fls/) with the '-m' option. 
 * [tsk_loaddb](/tsk_loaddb/): Loads the metadata from an image into a SQLite database.  This allows other tools to be easily written in a variety of languages and give them access to the image contents. 
 * [tsk_recover](/tsk_recover/): Extracts the unallocated (or allocated) files from a disk image to a local directory.
 
 ## File System Layer Tools
 These file system tools process general file system data, such as the layout, allocation structures, and boot blocks
-* [fsstat](/Fsstat/): Shows file system details and statistics including layout, sizes, and labels.
+* [fsstat](/fsstat/): Shows file system details and statistics including layout, sizes, and labels.
 
 ## File Name Layer Tools
 These file system tools process the file name structures, which are typically located in the parent directory.
-* [ffind](/Ffind/):  Finds allocated and unallocated file names that point to a given meta data structure.
-* [fls](/Fls/): Lists allocated and deleted file names in a directory.
+* [ffind](/ffind/):  Finds allocated and unallocated file names that point to a given meta data structure.
+* [fls](/fls/): Lists allocated and deleted file names in a directory.
 
 ## Meta Data Layer Tools
 These file system tools process the meta data structures, which store the details about a file.  Examples of this structure include directory entries in FAT, MFT entries in NTFS, and inodes in ExtX and UFS.
-* [icat](/Icat/): Extracts the data units of a file, which is specified by its meta data address (instead of the file name).
-* [ifind](/Ifind/): Finds the meta data structure that has a given file name pointing to it or the meta data structure that points to a given data unit.  
-* [ils](/Ils/): Lists the meta data structures and their contents in a pipe delimited format.  
-* [istat](/Istat/): Displays the statistics and details about a given meta data structure in an easy to read format.
+* [icat](/icat/): Extracts the data units of a file, which is specified by its meta data address (instead of the file name).
+* [ifind](/ifind/): Finds the meta data structure that has a given file name pointing to it or the meta data structure that points to a given data unit.  
+* [ils](/ils/): Lists the meta data structures and their contents in a pipe delimited format.  
+* [istat](/istat/): Displays the statistics and details about a given meta data structure in an easy to read format.
 
 ## Data Unit Layer Tools
 These file system tools process the [data unit](/Data-unit/)s where file content is stored.  Examples of this layer include clusters in FAT and NTFS and blocks and fragments in ExtX and UFS.  
-* [blkcat](/Blkcat/): Extracts the contents of a given data unit.
-* [blkls](/Blkls/): Lists the details about data units and can extract the unallocated  space of the file system.  
-* [blkstat](/Blkstat/): Displays the statistics about a given data unit in an easy to read format.
-* [blkcalc](/Blkcalc/): Calculates where data in the unallocated space image (from [blkls](/Blkls/)) exists in the original image.  This is used when evidence is found in unallocated space.
+* [blkcat](/blkcat/): Extracts the contents of a given data unit.
+* [blkls](/blkls/): Lists the details about data units and can extract the unallocated  space of the file system.  
+* [blkstat](/blkstat/): Displays the statistics about a given data unit in an easy to read format.
+* [blkcalc](/blkcalc/): Calculates where data in the unallocated space image (from [blkls](/blkls/)) exists in the original image.  This is used when evidence is found in unallocated space.
 
 ## File System Journal Tools
 These file system tools process the journal that some file systems have.  The journal records the metadata (and sometimes content) updates that are made.  This could help recover recently deleted data.  Examples of file systems with journals include Ext3 and NTFS.
-* [jcat](/Jcat/): Display the contents of a specific journal block.
-* [jls](/Jls/): List the entries in the file system journal.
+* [jcat](/jcat/): Display the contents of a specific journal block.
+* [jls](/jls/): List the entries in the file system journal.
 
 # Volume System Tools
 These tools take a disk (or other media) image as input and analyze its partition structures.  Examples include DOS partitions, BSD disk labels, and the Sun Volume Table of Contents (VTOC).  These
@@ -68,7 +68,7 @@ These tools can be used to detect and remove a Host Protected Area (HPA) in an A
 * [disk_stat](/disk_stat/): This tool will show if an HPA exists.  
 
 # Other Tools
-* [hfind](/Hfind/):  Uses a binary sort algorithm to lookup hashes in the NIST NSRL, Hashkeeper, and custom hash databases created by md5sum.
-* [mactime](/Mactime/): Takes input from the [fls](/Fls/) and [ils](/Ils/) tools to  create a [timeline](/Timeline/) of file activity.  
-* [sorter](/Sorter/): Sorts files based on their file type and performs extension checking and hash database lookups.   
-* [sigfind](/Sigfind/): Searches for a binary value at a given offset.  Useful for recovering lost data structures.
+* [hfind](/hfind/):  Uses a binary sort algorithm to lookup hashes in the NIST NSRL, Hashkeeper, and custom hash databases created by md5sum.
+* [mactime](/mactime/): Takes input from the [fls](/fls/) and [ils](/ils/) tools to  create a [timeline](/Timeline/) of file activity.  
+* [sorter](/sorter/): Sorts files based on their file type and performs extension checking and hash database lookups.   
+* [sigfind](/sigfind/): Searches for a binary value at a given offset.  Useful for recovering lost data structures.

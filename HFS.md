@@ -30,16 +30,16 @@ For reference, the source code to Apple's own implementation of HFS+ for Mac OS 
 The SleuthKit supports HFS+ and HFSX.  It also supports HFS, but only as a wrapper around an HFS+ file system.
 
 ### Resource Forks
-Files in HFS+ can have two sets of data, called *forks*: a data fork and a resource fork.  The data fork of most files contains what is conventionally considered to be the file's content.  With the exception of [compressed files](/HFS-File-Compression/), resource forks are not often used in modern versions of Mac OS X.  As of TSK 4.0.0, a file's resource fork is visible in its [istat](/Istat/) output and can be retrieved via [icat](/Icat/).  In TSK, a file's resource fork is made available as a file attribute called RSRC, number 4353-1, that can be passed to [icat](/Icat/) for examination.  (The data fork is attribute 4352-0, DATA, and is normally the default one used by [icat](/Icat/).)
+Files in HFS+ can have two sets of data, called *forks*: a data fork and a resource fork.  The data fork of most files contains what is conventionally considered to be the file's content.  With the exception of [compressed files](/HFS-File-Compression/), resource forks are not often used in modern versions of Mac OS X.  As of TSK 4.0.0, a file's resource fork is visible in its [istat](/istat/) output and can be retrieved via [icat](/icat/).  In TSK, a file's resource fork is made available as a file attribute called RSRC, number 4353-1, that can be passed to [icat](/icat/) for examination.  (The data fork is attribute 4352-0, DATA, and is normally the default one used by [icat](/icat/).)
 
-[istat](/Istat/) also parses the resource fork's contents (if present) and prints a list of the individual resource entries.  For each resource, it shows the resource *type* (four ASCII characters), the numeric ID, the offset (in bytes) within the file's resource fork, the size (in bytes), and the name of the resource (which is optional).
+[istat](/istat/) also parses the resource fork's contents (if present) and prints a list of the individual resource entries.  For each resource, it shows the resource *type* (four ASCII characters), the numeric ID, the offset (in bytes) within the file's resource fork, the size (in bytes), and the name of the resource (which is optional).
 
-To access an individual resource within the resource fork, use [icat](/Icat/) on *inum-4353-1* and examine the data at the offset and size given by [istat](/Istat/).
+To access an individual resource within the resource fork, use [icat](/icat/) on *inum-4353-1* and examine the data at the offset and size given by [istat](/istat/).
 
 ### HFS+ Attributes
 HFS+ supports arbitrary named attributes, called *extended attributes*, on files and directories.  Access Control Lists (ACLs) are the most common use for attributes in HFS+.  Extended attributes are also used to mark compressed files.
 
-As of TSK 4.0.0, [istat](/Istat/) shows all of a file's extended attributes.  Each extended attribute is loaded as a TSK attribute, with type ExATTR (numerically, 4354-*) and the name of the extended attribute as its TSK attribute name.  There is one exception: an attribute that marks a file as compressed, as explained in the next section, will have type CMPF (numerically, 4355).
+As of TSK 4.0.0, [istat](/istat/) shows all of a file's extended attributes.  Each extended attribute is loaded as a TSK attribute, with type ExATTR (numerically, 4354-*) and the name of the extended attribute as its TSK attribute name.  There is one exception: an attribute that marks a file as compressed, as explained in the next section, will have type CMPF (numerically, 4355).
 
 ### HFS+ File Compression
 In Mac OS X 10.6, Apple introduced *file compression* (AppleFSCompression, internally) in HFS+.  Compression is most often used for files installed as part of Mac OS X; user files are typically not compressed (but certainly can be!).  Reading and writing compressed files is transparent as far as Apple's file system APIs.
@@ -54,11 +54,11 @@ All compressed files have an extended attribute named <tt>com.apple.decmpfs</tt>
 
 (The on-disk format allows for other compression strategies to be defined and used, but Mac OS X as of 10.7.4 only uses these three. Since Mac OS X 10.9 LZVN is occasionally used on system files by default but SleuthKit does not support them yet. LZFSE is also introduced in 10.9. See [afsctool.h](https://github.com/RJVB/afsctool/blob/a716a6a4341fdd5116c70114449c5377bca0c8c5/src/afsctool.h#L52-L57).)
 
-As of TSK 4.0.0, [istat](/Istat/) will show these details about compressed HFS+ files.  In addition, [icat](/Icat/) will automatically decompress the file data by default.
+As of TSK 4.0.0, [istat](/istat/) will show these details about compressed HFS+ files.  In addition, [icat](/icat/) will automatically decompress the file data by default.
 
 In cases 2 and 3 (above), TSK will load the uncompressed data of the file into resident DATA attribute 4352-0.  In case 1, TSK will make the compressed data in the resource fork available as non-resident RSRC attribute 4353-1.  The *uncompressed* data will be available as a virtual DATA attribute, 4352-0 (appearing as non-resident).
 
-Thus, for any compressed file, [icat](/Icat/) of the default DATA attribute (4352-0) will show the uncompressed content of the file.  To read the raw, compressed data, point [icat](/Icat/) at the resource fork attribute (4353-1) or at the <tt>com.apple.decmpfs</tt> attribute as appropriate.
+Thus, for any compressed file, [icat](/icat/) of the default DATA attribute (4352-0) will show the uncompressed content of the file.  To read the raw, compressed data, point [icat](/icat/) at the resource fork attribute (4353-1) or at the <tt>com.apple.decmpfs</tt> attribute as appropriate.
 
 The exact same mechanism is also used by APFS, which SleuthKit supports.
 
@@ -81,13 +81,13 @@ HFS+ file systems can also contain hard links to directories, although such link
 
 >  <tt>/HFS+ Private Directory Data^</tt>
 
-where that last caret is a carriage return character (ASCII 0x0D).  In TSK, the [fls](/Fls/) and [istat](/Istat/) programs display this character as a caret, but in all other parts of TSK, the character is left as-is.  Each hard linked directory has a name like:
+where that last caret is a carriage return character (ASCII 0x0D).  In TSK, the [fls](/fls/) and [istat](/istat/) programs display this character as a caret, but in all other parts of TSK, the character is left as-is.  Each hard linked directory has a name like:
 
 >  <tt>dir_<i>&lt;nnn></i></tt>
 
 where *&lt;nnn>* is the link number.  As with hard linked files, the link number and the inode number (or CNID) are the same in practice, although this is not required by the specification, and TSK does not assume this.
 
-With ordinary use of TSK on an HFS+ file system, you will never have "in hand" the inode number (or CNID) of a hard link.  All of the utility programs and libraries that return inode numbers will only return the inode numbers of the link targets.  Thus, if you do an [istat](/Istat/), [icat](/Icat/), or [fls](/Fls/) of such an inode number, you will see the results for the hard link target.  So, the file name will be iNode<nnn> or dir_<nnn> for the appropriate link number.   The [istat](/Istat/) program will tell you that this is a hard link to a file or directory.   If you run [fls](/Fls/) on a directory that contains a hard link (file, or directory), the listing will show the name of the link, but will show the file type and inode number of the target.  Here is an example listing showing an fls of a directory followed by an istat of a hard link that it contains.
+With ordinary use of TSK on an HFS+ file system, you will never have "in hand" the inode number (or CNID) of a hard link.  All of the utility programs and libraries that return inode numbers will only return the inode numbers of the link targets.  Thus, if you do an [istat](/istat/), [icat](/icat/), or [fls](/fls/) of such an inode number, you will see the results for the hard link target.  So, the file name will be iNode<nnn> or dir_<nnn> for the appropriate link number.   The [istat](/istat/) program will tell you that this is a hard link to a file or directory.   If you run [fls](/fls/) on a directory that contains a hard link (file, or directory), the listing will show the name of the link, but will show the file type and inode number of the target.  Here is an example listing showing an fls of a directory followed by an istat of a hard link that it contains.
 
  $ ./fls -o 409640 -f hfs \\\\.\\PhysicalDrive1 39668
  r/r 39669:      .com.apple.timemachine.supported
@@ -139,7 +139,7 @@ With ordinary use of TSK on an HFS+ file system, you will never have "in hand" t
  
 This listing shows that entry <tt>.DS_Store</tt> occurs in the listed directory and is a hard link.  The name of the target is <tt>iNode270</tt>, and it is a regular file.
 
-If you [istat](/Istat/) a hard linked directory, such as "usr" (3274) above, you will get a similar result:
+If you [istat](/istat/) a hard linked directory, such as "usr" (3274) above, you will get a similar result:
 
  $ ./istat -o 409640 -f hfs \\\\.\\PhysicalDrive1 32974
  File Path: /.HFS+ Private Directory Data^/dir_32974
@@ -173,14 +173,14 @@ If you [istat](/Istat/) a hard linked directory, such as "usr" (3274) above, you
  Type: ExATTR (4354-4)   Name: com.apple.system.Security   Resident   size: 68
  Type: ExATTR (4354-5)   Name: com.apple.system.hfs.firstlink   Resident   size:6
 
-The [istat](/Istat/) of a file that occurs below such a hard linked directory in the file system hierarchy will show a path that begins with the link target, like this:
+The [istat](/istat/) of a file that occurs below such a hard linked directory in the file system hierarchy will show a path that begins with the link target, like this:
 
 >  <tt>File Path: /.HFS+ Private Directory Data^/dir_32974/sbin</tt>
 
-If you happen to [istat](/Istat/) the inode number of an actual link (file or directory), then istat will show you the path to the link.  However, it will show all other information about the link target.  This includes, several lines down, the name of the link target file or directory.
+If you happen to [istat](/istat/) the inode number of an actual link (file or directory), then istat will show you the path to the link.  However, it will show all other information about the link target.  This includes, several lines down, the name of the link target file or directory.
 
 ### HFS+ Symbolic Links
-Symbolic links are regular files that are specially marked, and contain the path of a "target" file as their data.  When using [fls](/Fls/), symbolic links will show up as type <tt>l/l</tt>.  The listing above contains two examples of symbolic links.  You can find the target of the symbolic link by using [icat](/Icat/) on it.
+Symbolic links are regular files that are specially marked, and contain the path of a "target" file as their data.  When using [fls](/fls/), symbolic links will show up as type <tt>l/l</tt>.  The listing above contains two examples of symbolic links.  You can find the target of the symbolic link by using [icat](/icat/) on it.
 
-[istat](/Istat/) recognizes symbolic links, and, at the end of the listing, will print the target path.
+[istat](/istat/) recognizes symbolic links, and, at the end of the listing, will print the target path.
 Note, that the target of a symbolic link does not need to exist in the file system.  In contrast, the target of a hard link must exist in a well-formed HFS+ file system.

@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Disk stat"
+title: "disk_stat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Disk-stat/"
   - "/index.php/Disk_stat"
+  - "/index.php/disk_stat"
   - "/wiki/Disk_stat"
+  - "/wiki/disk_stat"
 
 last_modified: 2010-10-28
 ---

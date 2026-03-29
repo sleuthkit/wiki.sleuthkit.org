@@ -1,19 +1,22 @@
 ---
 layout: default
-title: "Mactime"
+title: "mactime"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Mactime/"
   - "/index.php/Mactime"
+  - "/index.php/mactime"
   - "/wiki/Mactime"
+  - "/wiki/mactime"
 
 last_modified: 2010-08-13
 ---
 
 Back to [Help Documents](/Help-Documents/)
 
-mactime creates an ASCII [timeline](/Timeline/) of file activity based on the output of the [fls](/Fls/) tool. It can be used to detect anomalous behavior and reconstruct events. The [fls](/Fls/) command must use the *-m* flag to generate a output with timestamps.
+mactime creates an ASCII [timeline](/Timeline/) of file activity based on the output of the [fls](/fls/) tool. It can be used to detect anomalous behavior and reconstruct events. The [fls](/fls/) command must use the *-m* flag to generate a output with timestamps.
 
 mactime reads the [body file](/Body-file/) (using the '-b' argument), which contains a line for each file or event.  mactime then sorts the data based on its temporal data and prints the result. It can optionally use a starting date or a date range to limit the data being printed.  
 

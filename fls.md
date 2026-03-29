@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Fls"
+title: "fls"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Fls/"
   - "/index.php/Fls"
+  - "/index.php/fls"
   - "/wiki/Fls"
+  - "/wiki/fls"
 
 last_modified: 2014-01-13
 ---
@@ -40,7 +43,7 @@ The <tt>r/r</tt> value shows the file type.  The first 'r' is the type as saved 
 Most entries will be 'r' and 'd'.  The others are Unix-focused. 
 
 ### Metadata Address
-The <tt>1304-128-1</tt> part of the entry shows the [Metadata Address](/Metadata-Address/) associated with this name.  Because this is an NTFS example, the <tt>-128-1</tt> part exists, which identifies the $Data attribute that this name points to.  Other file systems may have a single number in this field. 
+The <tt>1304-128-1</tt> part of the entry shows the [Metadata Address](/Metadata-address/) associated with this name.  Because this is an NTFS example, the <tt>-128-1</tt> part exists, which identifies the $Data attribute that this name points to.  Other file systems may have a single number in this field. 
 
 ### File Name
 Finally, the <tt>IO.SYS</tt> part of the entry is the name of the file for this entry.
@@ -67,7 +70,7 @@ This occurs when the file name is in an unallocated state and the metadata struc
 ### -l format
 The '-l' argument causes the "long" format with more details.  It is tab-delimited with the following fields:
 * file type as reported in file name and metadata structure (see above)
-* [Metadata Address](/Metadata-Address/)
+* [Metadata Address](/Metadata-address/)
 * name
 * mtime (last modified time)
 * atime (last accessed time)

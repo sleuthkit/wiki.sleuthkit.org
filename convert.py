@@ -592,6 +592,39 @@ CATEGORY_ORDER = [
     "Autopsy", "Documentation", "Uncategorized",
 ]
 
+# ---------------------------------------------------------------------------
+# Title overrides: XML title → display title (slug, filename, page heading)
+# Normalises CLI tool names to lowercase + underscores.
+# ---------------------------------------------------------------------------
+TITLE_OVERRIDES: dict[str, str] = {
+    "Blkcalc": "blkcalc",
+    "Blkcat": "blkcat",
+    "Blkls": "blkls",
+    "Blkstat": "blkstat",
+    "Disk sreset": "disk_sreset",
+    "Disk stat": "disk_stat",
+    "Ffind": "ffind",
+    "Fls": "fls",
+    "Fsstat": "fsstat",
+    "Hfind": "hfind",
+    "Icat": "icat",
+    "Ifind": "ifind",
+    "Ils": "ils",
+    "Img cat": "img_cat",
+    "Img stat": "img_stat",
+    "Istat": "istat",
+    "Jcat": "jcat",
+    "Jls": "jls",
+    "Mac-robber": "mac-robber",
+    "Mactime": "mactime",
+    "Sigfind": "sigfind",
+    "Sorter": "sorter",
+    "Tsk comparedir": "tsk_comparedir",
+    "Tsk gettimes": "tsk_gettimes",
+    "Tsk loaddb": "tsk_loaddb",
+    "Tsk recover": "tsk_recover",
+}
+
 MANUAL_CATS = {
     "Adding Artifacts and Attributes": "Development",
     "Allocated files": "Concepts",
@@ -779,16 +812,24 @@ def main():
         if target:
             redirect_map[title] = target
 
-    # canonical_titles: lowercase → properly-cased title for case-insensitive resolution
-    canonical_titles: dict[str, str] = {t.lower(): t for t in all_titles}
+    # canonical_titles: lowercase → display title (after applying TITLE_OVERRIDES)
+    # Both the XML title and the override title map to the display title so that
+    # internal links written either way resolve correctly.
+    canonical_titles: dict[str, str] = {}
+    for t in all_titles:
+        display = TITLE_OVERRIDES.get(t, t)
+        canonical_titles[t.lower()] = display
+        canonical_titles[display.lower()] = display
 
-    # reverse_redirect: canonical title → sorted list of source titles that redirect to it
-    # Used to add redirect_from paths to the target page.
+    # xml_lower_to_title: lowercase XML title → original XML title
+    # Used to key reverse_redirect by XML title (which is what the main loop uses).
+    xml_lower_to_title: dict[str, str] = {t.lower(): t for t in all_titles}
+
+    # reverse_redirect: XML title of target → list of source titles that redirect to it
     reverse_redirect: dict[str, list[str]] = defaultdict(list)
     for src, dst in redirect_map.items():
-        # Resolve dst case-insensitively to match an actual page title
-        canonical_dst = canonical_titles.get(dst.lower(), dst)
-        reverse_redirect[canonical_dst].append(src)
+        actual_dst = xml_lower_to_title.get(dst.lower(), dst)
+        reverse_redirect[actual_dst].append(src)
 
     print(f"Found {len(redirect_map)} redirects")
 
@@ -829,14 +870,25 @@ def main():
             skipped_empty.append(title)
             continue
 
-        slug = title_to_slug(title)
+        # Apply title override (e.g. "Hfind" → "hfind", "Img cat" → "img_cat")
+        display_title = TITLE_OVERRIDES.get(title, title)
+        slug = title_to_slug(display_title)
+
         cats = extract_categories(wikitext)
         if not cats and title in MANUAL_CATS:
             cats = [MANUAL_CATS[title]]
 
-        # Build redirect_from: own MediaWiki paths + paths of any redirect pages
-        # that point here. Deduplicate and sort for deterministic output.
-        redir_paths: list[str] = list(title_to_mw_paths(title))
+        # Build redirect_from:
+        #  • MediaWiki path-based URLs for the new (display) title
+        #  • MediaWiki path-based URLs for the original XML title (when overridden)
+        #  • Old Jekyll URL (when slug changed due to override)
+        #  • MediaWiki paths for any #REDIRECT pages that point here
+        redir_paths: list[str] = list(title_to_mw_paths(display_title))
+        if display_title != title:
+            redir_paths.extend(title_to_mw_paths(title))
+            old_slug = title_to_slug(title)
+            if old_slug != slug:
+                redir_paths.append(f"/{old_slug}/")
         for src_title in reverse_redirect.get(title, []):
             redir_paths.extend(title_to_mw_paths(src_title))
         redir_paths = sorted(set(redir_paths))
@@ -847,8 +899,8 @@ def main():
             issues.append(f"[{title}] Conversion error: {e}")
             body = f"<!-- conversion error: {e} -->\n\n" + wikitext
 
-        write_page(slug, title, body, cats, timestamp, redir_paths)
-        pages_info.append((title, slug, cats))
+        write_page(slug, display_title, body, cats, timestamp, redir_paths)
+        pages_info.append((display_title, slug, cats))
         converted += 1
 
     print("Writing index page...")

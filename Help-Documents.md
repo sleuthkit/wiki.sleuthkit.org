@@ -23,7 +23,7 @@ This page contains links and references to online help documents on [The Sleuth 
 
 ## Concepts
 These should get moved to a better location on the wiki
-* [Metadata Address](/Metadata-Address/)
+* [Metadata Address](/Metadata-address/)
 * [data units](/Data-units/)
 * [Block Address](/Block-Address/)
 * [Orphan Files](/Orphan-Files/)

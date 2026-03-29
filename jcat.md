@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Jcat"
+title: "jcat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Jcat/"
   - "/index.php/Jcat"
+  - "/index.php/jcat"
   - "/wiki/Jcat"
+  - "/wiki/jcat"
 
 last_modified: 2008-09-12
 ---

@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Istat"
+title: "istat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Istat/"
   - "/index.php/Istat"
+  - "/index.php/istat"
   - "/wiki/Istat"
+  - "/wiki/istat"
 
 last_modified: 2008-09-12
 ---

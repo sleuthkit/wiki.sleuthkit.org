@@ -23,7 +23,7 @@ Welcome to the **SleuthKitWiki**.  This wiki is for sharing knowledge about proj
 This site is organized based on the different projects:
 * [The Sleuth Kit](/The-Sleuth-Kit/): A library and set of command line tools to analyze disk images.
 * [Autopsy](/Autopsy/): A graphical interface to the Sleuth Kit and other digital forensics tools. 
-* [mac-robber](/Mac-robber/): A simple tool to grab time data from a live system for making timelines. 
+* [mac-robber](/mac-robber/): A simple tool to grab time data from a live system for making timelines. 
 
 <table class="wiki-table table table-bordered table-sm">
   <tbody>

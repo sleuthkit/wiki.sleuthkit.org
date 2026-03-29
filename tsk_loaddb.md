@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Tsk loaddb"
+title: "tsk_loaddb"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Tsk-loaddb/"
   - "/index.php/Tsk_loaddb"
+  - "/index.php/tsk_loaddb"
   - "/wiki/Tsk_loaddb"
+  - "/wiki/tsk_loaddb"
 
 last_modified: 2017-11-21
 ---

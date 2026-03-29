@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Sigfind"
+title: "sigfind"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Sigfind/"
   - "/index.php/Sigfind"
+  - "/index.php/sigfind"
   - "/wiki/Sigfind"
+  - "/wiki/sigfind"
 
 last_modified: 2008-09-12
 ---

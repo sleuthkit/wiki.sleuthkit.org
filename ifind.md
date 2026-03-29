@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Ifind"
+title: "ifind"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Ifind/"
   - "/index.php/Ifind"
+  - "/index.php/ifind"
   - "/wiki/Ifind"
+  - "/wiki/ifind"
 
 last_modified: 2010-01-04
 ---

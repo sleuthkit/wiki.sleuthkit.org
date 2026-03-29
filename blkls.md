@@ -1,14 +1,17 @@
 ---
 layout: default
-title: "Blkls"
+title: "blkls"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Blkls/"
   - "/index.php/Blkls"
   - "/index.php/Dls"
+  - "/index.php/blkls"
   - "/wiki/Blkls"
   - "/wiki/Dls"
+  - "/wiki/blkls"
 
 last_modified: 2010-01-04
 ---

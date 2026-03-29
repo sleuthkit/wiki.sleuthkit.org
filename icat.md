@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Icat"
+title: "icat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Icat/"
   - "/index.php/Icat"
+  - "/index.php/icat"
   - "/wiki/Icat"
+  - "/wiki/icat"
 
 last_modified: 2008-09-12
 ---

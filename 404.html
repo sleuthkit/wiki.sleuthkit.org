@@ -119,18 +119,19 @@ permalink: /404.html
   // Covers all #REDIRECT pages from the original export.
   // ---------------------------------------------------------------------------
   var REDIRECT_MAP = {
+    // --- #REDIRECT pages from the original wiki ---
     'autopsy 3':                      'Autopsy',
     'autopsy 3 data flow':            'Autopsy-3-Nodes-and-Data-Flow',
     'autopsy forensic browser':       'Autopsy',
     'books on tsk':                   'Books-and-Courses',
     'books and courses on tsk':       'Books-and-Courses',
     'data units':                     'Data-unit',
-    'dcalc':                          'Blkcalc',
-    'dcat':                           'Blkcat',
+    'dcalc':                          'blkcalc',
+    'dcat':                           'blkcat',
     "developer's guide":              'TSK-Developers-Guide',
-    'dls':                            'Blkls',
+    'dls':                            'blkls',
     'documents on using tsk':         'Books-and-Courses',
-    'dstat':                          'Blkstat',
+    'dstat':                          'blkstat',
     'ext2/3':                         'ExtX',
     'fragments':                      'Fragment',
     "library user's guide":           'TSK-Library-Users-Guide',
@@ -142,7 +143,37 @@ permalink: /404.html
     'sectors':                        'Sector',
     'tsk':                            'The-Sleuth-Kit',
     'timeline':                       'Timelines',
-    'tools using tsk':                'Tools-Using-TSK-or-Autopsy'
+    'tools using tsk':                'Tools-Using-TSK-or-Autopsy',
+    // --- Renamed tool pages (old capitalised slug → new lowercase slug) ---
+    // Handles ?title=Blkcalc, /wiki/Blkcalc, etc. where titleToSlug fallback
+    // would produce the wrong capitalised URL.
+    'blkcalc':                        'blkcalc',
+    'blkcat':                         'blkcat',
+    'blkls':                          'blkls',
+    'blkstat':                        'blkstat',
+    'ffind':                          'ffind',
+    'fls':                            'fls',
+    'fsstat':                         'fsstat',
+    'hfind':                          'hfind',
+    'icat':                           'icat',
+    'ifind':                          'ifind',
+    'ils':                            'ils',
+    'istat':                          'istat',
+    'jcat':                           'jcat',
+    'jls':                            'jls',
+    'mac-robber':                     'mac-robber',
+    'mactime':                        'mactime',
+    'sigfind':                        'sigfind',
+    'sorter':                         'sorter',
+    // --- Tools with underscores (old ?title=Disk_stat → "disk stat" after _ replace) ---
+    'disk sreset':                    'disk_sreset',
+    'disk stat':                      'disk_stat',
+    'img cat':                        'img_cat',
+    'img stat':                       'img_stat',
+    'tsk comparedir':                 'tsk_comparedir',
+    'tsk gettimes':                   'tsk_gettimes',
+    'tsk loaddb':                     'tsk_loaddb',
+    'tsk recover':                    'tsk_recover'
   };
 
   // ---------------------------------------------------------------------------

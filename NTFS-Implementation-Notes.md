@@ -31,7 +31,7 @@ ways as any UNIX image, including:
 
 # Metadata Addresses
 The Sleuth Kit allows one to view all aspects of the NTFS structure.
-It does this using a special [Metadata Address](/Metadata-Address/) format. 
+It does this using a special [Metadata Address](/Metadata-address/) format. 
 With UNIX you only need
 to reference the inode number because there is only one piece of
 content for the file.  With NTFS, one can either specify just the
@@ -42,7 +42,7 @@ the id can be used after the type, 36-128-5 for example.
 
 All Sleuth Kit tools can take MFT values in any of the above formats
 and output from the tools will also be in one of the above formats.
-For example, the [istat](/Istat/) tool will list all attributes a file has.
+For example, the [istat](/istat/) tool will list all attributes a file has.
 To get the details of MFT entry 49, use:
 
 ```
@@ -111,7 +111,7 @@ characters and other binary data (I would recommend just using the
 output of the istat command for this type of data).
     
 
-The output of the [fls](/Fls/) command is similar:
+The output of the [fls](/fls/) command is similar:
 
 ```
 # fls -f ntfs ntfs.dd

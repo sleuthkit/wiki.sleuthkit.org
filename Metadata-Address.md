@@ -6,11 +6,7 @@ categories:
 
 redirect_from:
   - "/index.php/Metadata_Address"
-  - "/index.php/Metadata_address"
-  - "/index.php/Metadata_addresses"
   - "/wiki/Metadata_Address"
-  - "/wiki/Metadata_address"
-  - "/wiki/Metadata_addresses"
 
 last_modified: 2014-01-14
 ---
@@ -33,7 +29,7 @@ Some file systems, such as NTFS and HFS, allow a file to have multiple notions o
 
 The <tt>TYPE</tt> number specifies the type of data being stored in the attribute (such as file content, directory contents, or file metadata).  These numbers are file system-specific. The <tt>ID</tt> number allows you to differentiate between different instances of the same attribute type. Each attribute in a file will have a unique <tt>ID</tt> value.  Note that some NTFS files will have attributes that span multiple MFT entries.  In that case, NTFS does not guarantee that each attribute ID will be unique because NTFS guarantees only that an ID will be unique to a single MFT entry.  TSK overrides those ID values though and assigns new ones so that each attribute is unique. 
 
-As an example, here is the output of the [fls](/Fls/) command on an NTFS image:
+As an example, here is the output of the [fls](/fls/) command on an NTFS image:
 
 ```
 # fls -f ntfs ntfs.dd
@@ -47,4 +43,4 @@ As an example, here is the output of the [fls](/Fls/) command on an NTFS image:
 
 There are three files (with addresses 48, 49, and 50). The type value of 128 in an NTFS file system is for the $Data attribute. The file at address 49 has two $Data attributes (one is the default and the other is named ":NEW").  You can see that each of them has a unique ID value (1 and 5). Refer to the [NTFS Implementation Notes](/NTFS-Implementation-Notes/) for more examples. 
 
-In general, if you want TSK to choose the default data attribute (or if the file system does not support the notion of attributes), give TSK only the metadata address.  If you want to specify an attribute and you know there is only one of them, use <tt>ADDR-TYPE</tt>.  If there are multiple attributes of the same type, then also specify an <tt>ID</tt>.  Typically, the [istat](/Istat/) output will show which attributes are defined for a file.
+In general, if you want TSK to choose the default data attribute (or if the file system does not support the notion of attributes), give TSK only the metadata address.  If you want to specify an attribute and you know there is only one of them, use <tt>ADDR-TYPE</tt>.  If there are multiple attributes of the same type, then also specify an <tt>ID</tt>.  Typically, the [istat](/istat/) output will show which attributes are defined for a file.

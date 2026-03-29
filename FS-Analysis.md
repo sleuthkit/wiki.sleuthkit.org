@@ -27,7 +27,7 @@ education.
 The techniques used here apply to both UNIX and Windows file systems.
 
 # Timelines
-The steps from the [timeline](/Timeline/) Sleuth Kit Implementation Notes are followed and you notice some interesting activity from unallocated inodes, namely MFT Entry 5035 from image c_drive.dd.  To display the contents of this file, use [icat](/Icat/):
+The steps from the [timeline](/Timeline/) Sleuth Kit Implementation Notes are followed and you notice some interesting activity from unallocated inodes, namely MFT Entry 5035 from image c_drive.dd.  To display the contents of this file, use [icat](/icat/):
 
 ```
 # icat images/c_drive.dd 5035 | less
@@ -37,7 +37,7 @@ NOTE: To prevent your terminal from getting messed up, pipe all
 output of "icat" through a pager like "less".
 
 # Search
-In this scenario, we will search the unallocated space of the "wd0e.dd" image for the string "abcdefg".  The first step is to extract the unallocated disk units using the [blkls](/Blkls/) tool (as this is an FFS image, the addressable units are fragments).
+In this scenario, we will search the unallocated space of the "wd0e.dd" image for the string "abcdefg".  The first step is to extract the unallocated disk units using the [blkls](/blkls/) tool (as this is an FFS image, the addressable units are fragments).
 
 ```
 # blkls images/wd0e.dd > output/wd0e.blkls
@@ -57,7 +57,7 @@ Use the UNIX grep(1) utility to search the strings file.
 ```
 
 We notice that the string is located at byte 10389739.  Next,
-determine what fragment.  To do this, we use the [fsstat](/Fsstat/) tool:
+determine what fragment.  To do this, we use the [fsstat](/fsstat/) tool:
 
 ```
 # fsstat -t ufs images/wd0e.dd
@@ -72,7 +72,7 @@ determine what fragment.  To do this, we use the [fsstat](/Fsstat/) tool:
 This shows us that each fragment is 1024 bytes long.  Using a
 calculator, we find that byte 10389739 divided by 1024 is 10146
 (and change).  This means that the string "abcdefg" is located in
-fragment 10146 of the [blkls](/Blkls/) generated file.  This does not really
+fragment 10146 of the [blkls](/blkls/) generated file.  This does not really
 help us because the blkls image is not a real file system.  To view
 the full fragment from the blkls image, we can use dd:
 
@@ -81,7 +81,7 @@ the full fragment from the blkls image, we can use dd:
 ```
 
 Next, we will identify where this fragment is in the original image.
-The [blkcalc](/Blkcalc/) tool will be used for this.  "blkcalc" will return the
+The [blkcalc](/blkcalc/) tool will be used for this.  "blkcalc" will return the
 "address" in the original image when given the "address" in the
 blkls generated image.  (NOTE, this is currently kind of slow).  The
 '-u' flag shows that we are giving it an blkls address.  If the '-d'
@@ -102,7 +102,7 @@ the contents of this fragment, we can use "blkcat".
 
 To make more sense of this, let us identify if there is a meta data
 structure that still has a pointer to this fragment.  This is achieved
-using [ifind](/Ifind/).  The '-a' argument means to find all occurrences.
+using [ifind](/ifind/).  The '-a' argument means to find all occurrences.
 
 ```
 # ifind -a images/wd0e.dd 59382
@@ -110,7 +110,7 @@ using [ifind](/Ifind/).  The '-a' argument means to find all occurrences.
 ```
 
 Inode 493 has a pointer to fragment 59382.  Let us get more information
-about inode 493, using [istat](/Istat/).
+about inode 493, using [istat](/istat/).
 
 ```
 # istat images/wd0e.dd 493
@@ -128,7 +128,7 @@ about inode 493, using [istat](/Istat/).
 ```
 
 Next, let us find out if there is a file that is still associated with
-this (unallocated) inode.  This is done using [ffind](/Ffind/).
+this (unallocated) inode.  This is done using [ffind](/ffind/).
 
 ```
 # ffind -a images/wd0e.dd 493
@@ -151,7 +151,7 @@ As previously mentioned, Autopsy will do all of this for you when
 you do a keyword search of unallocated space.
 
 # Deleted Content
-To view all of the deleted file names in an image, use the [fls](/Fls/) tool.
+To view all of the deleted file names in an image, use the [fls](/fls/) tool.
 For all deleted files, use the '-r' flag for recursive and '-d' flag
 for deleted.
 

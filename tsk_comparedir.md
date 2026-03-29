@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Tsk comparedir"
+title: "tsk_comparedir"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Tsk-comparedir/"
   - "/index.php/Tsk_comparedir"
+  - "/index.php/tsk_comparedir"
   - "/wiki/Tsk_comparedir"
+  - "/wiki/tsk_comparedir"
 
 last_modified: 2010-10-28
 ---

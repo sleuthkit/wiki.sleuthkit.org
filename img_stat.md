@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Img stat"
+title: "img_stat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Img-stat/"
   - "/index.php/Img_stat"
+  - "/index.php/img_stat"
   - "/wiki/Img_stat"
+  - "/wiki/img_stat"
 
 last_modified: 2008-09-12
 ---

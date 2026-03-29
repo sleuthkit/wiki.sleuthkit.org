@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Ffind"
+title: "ffind"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Ffind/"
   - "/index.php/Ffind"
+  - "/index.php/ffind"
   - "/wiki/Ffind"
+  - "/wiki/ffind"
 
 last_modified: 2008-09-12
 ---

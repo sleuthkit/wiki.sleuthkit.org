@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Jls"
+title: "jls"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Jls/"
   - "/index.php/Jls"
+  - "/index.php/jls"
   - "/wiki/Jls"
+  - "/wiki/jls"
 
 last_modified: 2008-09-12
 ---

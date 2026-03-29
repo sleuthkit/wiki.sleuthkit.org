@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Fsstat"
+title: "fsstat"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Fsstat/"
   - "/index.php/Fsstat"
+  - "/index.php/fsstat"
   - "/wiki/Fsstat"
+  - "/wiki/fsstat"
 
 last_modified: 2008-09-12
 ---

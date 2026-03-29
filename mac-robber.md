@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Mac-robber"
+title: "mac-robber"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Mac-robber/"
   - "/index.php/Mac-robber"
+  - "/index.php/mac-robber"
   - "/wiki/Mac-robber"
+  - "/wiki/mac-robber"
 
 last_modified: 2016-05-18
 ---

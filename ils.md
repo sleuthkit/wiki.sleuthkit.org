@@ -1,12 +1,15 @@
 ---
 layout: default
-title: "Ils"
+title: "ils"
 categories:
   - "Tools"
 
 redirect_from:
+  - "/Ils/"
   - "/index.php/Ils"
+  - "/index.php/ils"
   - "/wiki/Ils"
+  - "/wiki/ils"
 
 last_modified: 2008-09-12
 ---
