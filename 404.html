@@ -1,0 +1,272 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — The Sleuth Kit Wiki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c2130;">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="/">
+      <span style="color: #3b6fc4;">&#9650;</span> The Sleuth Kit Wiki
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/The-Sleuth-Kit/">The Sleuth Kit</a></li>
+        <li class="nav-item"><a class="nav-link" href="/Autopsy/">Autopsy</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sleuthkit.org" target="_blank" rel="noopener">sleuthkit.org ↗</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+
+      <!-- State: checking for redirect (hidden after JS runs) -->
+      <div id="state-checking">
+        <p class="text-muted small">Checking for redirect&hellip;</p>
+      </div>
+
+      <!-- State: redirect found -->
+      <div id="state-redirect" style="display:none;">
+        <div class="wiki-note mb-4">
+          <strong>Redirecting&hellip;</strong>
+          Found a matching page at <strong><a id="redirect-url" href="#"></a></strong>.
+          <span id="countdown"></span>
+        </div>
+        <p class="text-muted small">
+          Old URL detected: <code id="old-url-display"></code>
+        </p>
+      </div>
+
+      <!-- State: not found -->
+      <div id="state-not-found" style="display:none;">
+        <h1 class="page-title mb-4">Page Not Found</h1>
+
+        <p class="lead">
+          The page you requested doesn't exist on this wiki.
+        </p>
+
+        <div id="suggested-title-block" style="display:none;" class="wiki-note mb-4">
+          Looking for <strong><em><span id="suggested-title"></span></em></strong>?
+          That page wasn't found in this archive. It may have been removed or never migrated.
+        </div>
+
+        <p>A few things to try:</p>
+        <ul>
+          <li><a href="/">Browse all pages</a> — the full page index, organized by category</li>
+          <li>Check the current docs at
+            <a href="https://sleuthkit.org/sleuthkit/docs/" target="_blank" rel="noopener">sleuthkit.org/sleuthkit/docs/</a>
+            or
+            <a href="https://sleuthkit.org/autopsy/docs/" target="_blank" rel="noopener">sleuthkit.org/autopsy/docs/</a>
+          </li>
+          <li>Search on <a href="https://github.com/sleuthkit" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+
+        <div class="mt-5 text-center">
+          <a href="/" class="btn btn-primary px-4">Go to Home Page</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer class="mt-5 py-4" style="background-color:#1c2130;color:#aab4c8;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="mb-1 small">
+          <strong style="color:#fff;">The Sleuth Kit Wiki</strong> —
+          Archived documentation for The Sleuth Kit and Autopsy.
+        </p>
+        <p class="mb-0 small">
+          For current docs visit <a href="https://sleuthkit.org" style="color:#3b6fc4;">sleuthkit.org</a>.
+        </p>
+      </div>
+      <div class="col-md-6 text-md-end mt-3 mt-md-0">
+        <p class="mb-0 small">Content originally from wiki.sleuthkit.org</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ---------------------------------------------------------------------------
+  // Redirect map: old wiki title (lowercase) → canonical Jekyll slug
+  // Covers all #REDIRECT pages from the original export.
+  // ---------------------------------------------------------------------------
+  var REDIRECT_MAP = {
+    'autopsy 3':                      'Autopsy',
+    'autopsy 3 data flow':            'Autopsy-3-Nodes-and-Data-Flow',
+    'autopsy forensic browser':       'Autopsy',
+    'books on tsk':                   'Books-and-Courses',
+    'books and courses on tsk':       'Books-and-Courses',
+    'data units':                     'Data-unit',
+    'dcalc':                          'Blkcalc',
+    'dcat':                           'Blkcat',
+    "developer's guide":              'TSK-Developers-Guide',
+    'dls':                            'Blkls',
+    'documents on using tsk':         'Books-and-Courses',
+    'dstat':                          'Blkstat',
+    'ext2/3':                         'ExtX',
+    'fragments':                      'Fragment',
+    "library user's guide":           'TSK-Library-Users-Guide',
+    'library users guide':            'TSK-Library-Users-Guide',
+    'mac-robber output':              'Mactime-output',
+    'metadata address':               'Metadata-Address',
+    'metadata addresses':             'Metadata-Address',
+    'project communication':          'Project-Communication',
+    'sectors':                        'Sector',
+    'tsk':                            'The-Sleuth-Kit',
+    'timeline':                       'Timelines',
+    'tools using tsk':                'Tools-Using-TSK-or-Autopsy'
+  };
+
+  // ---------------------------------------------------------------------------
+  // Replicate the Python title_to_slug() logic in JavaScript.
+  //
+  //   def title_to_slug(title):
+  //     slug = title.strip()
+  //     slug = re.sub(r'[:/]', '-', slug)
+  //     slug = re.sub(r'\s+', '-', slug)
+  //     slug = re.sub(r'[^A-Za-z0-9_\-]', '', slug)
+  //     slug = re.sub(r'-+', '-', slug).strip('-')
+  //     return slug
+  // ---------------------------------------------------------------------------
+  function titleToSlug(title) {
+    var slug = title.trim();
+    slug = slug.replace(/[:/]/g, '-');
+    slug = slug.replace(/\s+/g, '-');
+    slug = slug.replace(/[^A-Za-z0-9_\-]/g, '');
+    slug = slug.replace(/-+/g, '-').replace(/^-+|-+$/g, '');
+    return slug;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Extract a MediaWiki page title from the current URL.
+  //
+  // Patterns handled:
+  //   /index.php?title=Page_Name[&action=...]
+  //   /index.php/Page_Name
+  //   /wiki/Page_Name
+  //   ?title=Page_Name          (any path)
+  // ---------------------------------------------------------------------------
+  function extractWikiTitle() {
+    var search   = window.location.search;   // e.g. "?title=The_Sleuth_Kit&action=edit"
+    var pathname = window.location.pathname; // e.g. "/wiki/The_Sleuth_Kit"
+
+    // 1. Query-string: ?title=...
+    if (search) {
+      var params = new URLSearchParams(search);
+      var t = params.get('title');
+      if (t) {
+        return decodeURIComponent(t).replace(/_/g, ' ');
+      }
+    }
+
+    // 2. Path-based: /wiki/Page_Name or /index.php/Page_Name
+    var pathMatch = pathname.match(/^\/(?:wiki|index\.php)\/(.+)$/i);
+    if (pathMatch) {
+      return decodeURIComponent(pathMatch[1]).replace(/_/g, ' ');
+    }
+
+    return null;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Resolve a title to a Jekyll URL:
+  //   1. Check redirect map (case-insensitive)
+  //   2. Fall back to direct slug conversion
+  // Returns an absolute path like "/The-Sleuth-Kit/"
+  // ---------------------------------------------------------------------------
+  function resolveUrl(title) {
+    var lower = title.toLowerCase();
+    if (REDIRECT_MAP.hasOwnProperty(lower)) {
+      return '/' + REDIRECT_MAP[lower] + '/';
+    }
+    var slug = titleToSlug(title);
+    if (slug) {
+      return '/' + slug + '/';
+    }
+    return null;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Show a state, hide the others
+  // ---------------------------------------------------------------------------
+  function showState(id) {
+    ['state-checking', 'state-redirect', 'state-not-found'].forEach(function (s) {
+      document.getElementById(s).style.display = (s === id) ? '' : 'none';
+    });
+  }
+
+  // ---------------------------------------------------------------------------
+  // Main
+  // ---------------------------------------------------------------------------
+  var title = extractWikiTitle();
+
+  if (title) {
+    var targetUrl = resolveUrl(title);
+
+    if (targetUrl) {
+      // Show redirect state with countdown
+      showState('state-redirect');
+
+      var oldDisplay  = document.getElementById('old-url-display');
+      var redirectLink = document.getElementById('redirect-url');
+      var countdownEl  = document.getElementById('countdown');
+
+      oldDisplay.textContent   = window.location.href;
+      redirectLink.textContent = targetUrl;
+      redirectLink.href        = targetUrl;
+
+      var secs = 3;
+      function tick() {
+        countdownEl.textContent = ' Redirecting in ' + secs + '\u2026';
+        if (secs === 0) {
+          window.location.replace(targetUrl);
+        } else {
+          secs--;
+          setTimeout(tick, 1000);
+        }
+      }
+      tick();
+      return; // done
+    }
+  }
+
+  // No redirect found — show 404 message
+  showState('state-not-found');
+
+  if (title) {
+    document.getElementById('suggested-title').textContent = title;
+    document.getElementById('suggested-title-block').style.display = '';
+  }
+
+})();
+</script>
+</body>
+</html>

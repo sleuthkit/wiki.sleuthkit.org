@@ -1,0 +1,72 @@
+/* SleuthKit Wiki */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  color: #2d3748;
+  background: #fff;
+}
+.page-title {
+  font-weight: 700;
+  color: #1c2130;
+  border-bottom: 3px solid #3b6fc4;
+  padding-bottom: .5rem;
+}
+.wiki-content h1,.wiki-content h2,.wiki-content h3,
+.wiki-content h4,.wiki-content h5,.wiki-content h6 {
+  font-weight: 600;
+  color: #1c2130;
+  margin-top: 1.75rem;
+  margin-bottom: .75rem;
+}
+.wiki-content h1 { font-size:1.75rem; border-bottom:2px solid #e2e8f0; padding-bottom:.4rem; }
+.wiki-content h2 { font-size:1.4rem;  border-bottom:1px solid #e2e8f0; padding-bottom:.3rem; }
+.wiki-content h3 { font-size:1.15rem; }
+.wiki-content a { color:#3b6fc4; text-decoration:none; }
+.wiki-content a:hover { color:#2a52a0; text-decoration:underline; }
+.wiki-content pre, .wiki-content code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: .875em;
+}
+.wiki-content pre {
+  background:#f7f8fa; border:1px solid #e2e8f0; border-radius:6px;
+  padding:1rem; overflow-x:auto;
+}
+.wiki-content code {
+  background:#f7f8fa; border-radius:3px; padding:.15em .35em; color:#c7254e;
+}
+.wiki-content pre code { background:none; padding:0; color:inherit; }
+.wiki-content blockquote {
+  border-left:4px solid #3b6fc4; padding-left:1rem; color:#4a5568; margin:1rem 0;
+}
+.wiki-content ul,.wiki-content ol { padding-left:1.5rem; }
+.wiki-content li { margin-bottom:.25rem; }
+.wiki-table, .wiki-content table {
+  width:100%; margin:1rem 0; border-collapse:collapse; font-size:.9rem;
+}
+.wiki-table th, .wiki-content table th {
+  background:#1c2130; color:#fff; padding:.5rem .75rem; font-weight:600;
+}
+.wiki-table td, .wiki-content table td {
+  padding:.4rem .75rem; border:1px solid #e2e8f0; vertical-align:top;
+}
+.wiki-table tr:nth-child(even) td, .wiki-content table tr:nth-child(even) td {
+  background:#f7f8fa;
+}
+.wiki-content .sidebar-card a { color:#3b6fc4; display:block; padding:.15rem 0; }
+.wiki-content .sidebar-card a:hover { color:#2a52a0; }
+.wiki-note {
+  background:#ebf4ff; border-left:4px solid #3b6fc4;
+  padding:.75rem 1rem; border-radius:0 4px 4px 0; margin:1rem 0;
+}
+.navbar-brand { font-size:1.1rem; letter-spacing:-.01em; }
+.category-section { margin-bottom:2rem; }
+.category-section h2 {
+  font-size:1.1rem; font-weight:600; color:#3b6fc4;
+  border-bottom:1px solid #e2e8f0; padding-bottom:.3rem; margin-bottom:.75rem;
+}
+.category-section ul {
+  list-style:none; padding-left:0; column-count:2; column-gap:2rem;
+}
+.category-section li { margin-bottom:.25rem; break-inside:avoid; }
+.category-section a { color:#3b6fc4; text-decoration:none; }
+.category-section a:hover { text-decoration:underline; }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet">
+  {% seo %}
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c2130;">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" href="/">
+      <span style="color: #3b6fc4;">&#9650;</span> The Sleuth Kit Wiki
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/The-Sleuth-Kit/">The Sleuth Kit</a></li>
+        <li class="nav-item"><a class="nav-link" href="/Autopsy/">Autopsy</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sleuthkit.org" target="_blank" rel="noopener">sleuthkit.org ↗</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-4">
+  <div class="row">
+    <div class="col-lg-9">
+      {% if page.title and page.title != "Home" %}
+        <h1 class="page-title mb-4">{{ page.title }}</h1>
+      {% endif %}
+      <div class="wiki-content">
+        {{ content }}
+      </div>
+      {% if page.last_modified %}
+        <hr class="mt-5">
+        <p class="text-muted small">Last modified: {{ page.last_modified }}</p>
+      {% endif %}
+    </div>
+    <div class="col-lg-3 d-none d-lg-block">
+      <div class="card border-0 shadow-sm" style="position:sticky;top:1rem;">
+        <div class="card-body">
+          <h6 class="fw-semibold text-uppercase mb-3"
+              style="color:#3b6fc4;font-size:0.7rem;letter-spacing:0.08em;">Quick Links</h6>
+          <ul class="list-unstyled mb-0 small">
+            <li><a href="/TSK-Tool-Overview/">TSK Tool Overview</a></li>
+            <li><a href="/The-Sleuth-Kit/">The Sleuth Kit</a></li>
+            <li><a href="/Autopsy/">Autopsy</a></li>
+            <li><a href="/TSK-Developers-Guide/">Developer's Guide</a></li>
+            <li><a href="/Blackboard/">Blackboard</a></li>
+            <li><a href="/Body-file/">Body file</a></li>
+            <li><a href="/Timelines/">Timelines</a></li>
+            <li><a href="/FAT/">FAT</a></li>
+            <li><a href="/NTFS/">NTFS</a></li>
+            <li><a href="/ExtX/">ExtX</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="mt-5 py-4" style="background-color:#1c2130;color:#aab4c8;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="mb-1 small">
+          <strong style="color:#fff;">The Sleuth Kit Wiki</strong> —
+          Archived documentation for The Sleuth Kit and Autopsy.
+        </p>
+        <p class="mb-0 small">
+          For current docs visit <a href="https://sleuthkit.org" style="color:#3b6fc4;">sleuthkit.org</a>.
+        </p>
+      </div>
+      <div class="col-md-6 text-md-end mt-3 mt-md-0">
+        <p class="mb-0 small">Content originally from wiki.sleuthkit.org</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
