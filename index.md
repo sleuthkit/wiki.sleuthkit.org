@@ -6,78 +6,40 @@ title: "Home"
 # The Sleuth Kit Wiki
 
 <div class="wiki-note">
-<strong>Note:</strong> This is an archived version of wiki.sleuthkit.org.
-For current documentation, visit <a href="https://sleuthkit.org">sleuthkit.org</a>.
+<strong>Note:</strong> This has not been updated in a while. You may find more up to date 
+information on <a href="https://sleuthkit.org">sleuthkit.org</a> or <a href="https://autopsy.com">Autopsy.com</a>. 
 </div>
 
-This wiki covers **The Sleuth Kit** (TSK) library and command-line tools,
-**Autopsy** forensic browser, and related digital forensics concepts.
+This wiki covers the open source projects from **Sleuth Kit LABS**. 
 
 ---
 
 <div class="row">
-<div class="col-md-4 mb-3"><div class="card border-0 shadow-sm h-100"><div class="card-body">
+
+<div class="col-md-6 mb-3"><div class="card border-0 shadow-sm h-100">
+<img src="/assets/images/Hash3_v1_sm.jpg" class="card-img-top" alt="The Sleuth Kit"
+     style="object-fit:contain;max-height:140px;padding:1.25rem 1.25rem 0;background:#f7f8fa;">
+<div class="card-body">
 <h5 class="card-title" style="color:#3b6fc4;">The Sleuth Kit</h5>
-<p class="card-text small">Library and command-line tools for disk image analysis.</p>
-<a href="/The-Sleuth-Kit/" class="btn btn-sm btn-outline-primary">Learn more</a>
+<p class="card-text small">Open source library and command-line tools for disk image analysis.</p>
+<a href="/The-Sleuth-Kit/" class="btn btn-sm btn-outline-primary me-2">Learn more</a>
+<a href="/TSK-Tool-Overview/" class="btn btn-sm btn-outline-secondary">Tool Overview</a>
 </div></div></div>
-<div class="col-md-4 mb-3"><div class="card border-0 shadow-sm h-100"><div class="card-body">
+
+<div class="col-md-6 mb-3"><div class="card border-0 shadow-sm h-100">
+<img src="/assets/images/Renzik.png" class="card-img-top" alt="Autopsy"
+     style="object-fit:contain;max-height:140px;padding:1.25rem 1.25rem 0;background:#f7f8fa;">
+<div class="card-body">
 <h5 class="card-title" style="color:#3b6fc4;">Autopsy</h5>
-<p class="card-text small">Graphical forensic platform built on TSK.</p>
+<p class="card-text small">Graphical forensic platform built on The Sleuth Kit.</p>
 <a href="/Autopsy/" class="btn btn-sm btn-outline-primary">Learn more</a>
 </div></div></div>
-<div class="col-md-4 mb-3"><div class="card border-0 shadow-sm h-100"><div class="card-body">
-<h5 class="card-title" style="color:#3b6fc4;">TSK Tool Overview</h5>
-<p class="card-text small">Overview of all command-line tools organized by layer.</p>
-<a href="/TSK-Tool-Overview/" class="btn btn-sm btn-outline-primary">Learn more</a>
-</div></div></div>
+
 </div>
 
 ---
 
 ## All Pages by Category
-
-<div class="category-section">
-<h2>Tools</h2>
-<ul>
-<li><a href="/blkcalc/">blkcalc</a></li>
-<li><a href="/blkcat/">blkcat</a></li>
-<li><a href="/blkls/">blkls</a></li>
-<li><a href="/blkstat/">blkstat</a></li>
-<li><a href="/disk_sreset/">disk_sreset</a></li>
-<li><a href="/disk_stat/">disk_stat</a></li>
-<li><a href="/Error-Messages/">Error Messages</a></li>
-<li><a href="/ffind/">ffind</a></li>
-<li><a href="/fls/">fls</a></li>
-<li><a href="/fsstat/">fsstat</a></li>
-<li><a href="/hfind/">hfind</a></li>
-<li><a href="/icat/">icat</a></li>
-<li><a href="/ifind/">ifind</a></li>
-<li><a href="/ils/">ils</a></li>
-<li><a href="/img_cat/">img_cat</a></li>
-<li><a href="/img_stat/">img_stat</a></li>
-<li><a href="/istat/">istat</a></li>
-<li><a href="/jcat/">jcat</a></li>
-<li><a href="/jls/">jls</a></li>
-<li><a href="/mac-robber/">mac-robber</a></li>
-<li><a href="/mactime/">mactime</a></li>
-<li><a href="/Mactime-output/">Mactime output</a></li>
-<li><a href="/Mmcat/">Mmcat</a></li>
-<li><a href="/Mmls/">Mmls</a></li>
-<li><a href="/Mmstat/">Mmstat</a></li>
-<li><a href="/sigfind/">sigfind</a></li>
-<li><a href="/sorter/">sorter</a></li>
-<li><a href="/TCT/">TCT</a></li>
-<li><a href="/The-Sleuth-Kit/">The Sleuth Kit</a></li>
-<li><a href="/The-Sleuth-Kit-commands/">The Sleuth Kit commands</a></li>
-<li><a href="/Tools-Using-TSK-or-Autopsy/">Tools Using TSK or Autopsy</a></li>
-<li><a href="/TSK-Tool-Overview/">TSK Tool Overview</a></li>
-<li><a href="/tsk_comparedir/">tsk_comparedir</a></li>
-<li><a href="/tsk_gettimes/">tsk_gettimes</a></li>
-<li><a href="/tsk_loaddb/">tsk_loaddb</a></li>
-<li><a href="/tsk_recover/">tsk_recover</a></li>
-</ul>
-</div>
 
 <div class="category-section">
 <h2>File Systems</h2>
