@@ -5,6 +5,7 @@ url: "https://wiki.sleuthkit.org"
 
 markdown: kramdown
 highlighter: rouge
+permalink: pretty
 
 kramdown:
   input: GFM
@@ -13,6 +14,7 @@ kramdown:
 plugins:
   - jekyll-redirect-from
   - jekyll-seo-tag
+
 
 defaults:
   - scope:
