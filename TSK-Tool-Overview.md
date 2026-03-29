@@ -72,3 +72,4 @@ These tools can be used to detect and remove a Host Protected Area (HPA) in an A
 * [mactime](/mactime/): Takes input from the [fls](/fls/) and [ils](/ils/) tools to  create a [timeline](/Timeline/) of file activity.  
 * [sorter](/sorter/): Sorts files based on their file type and performs extension checking and hash database lookups.   
 * [sigfind](/sigfind/): Searches for a binary value at a given offset.  Useful for recovering lost data structures.
+* [mac-robber](/mac-robber/): Collects file system metadata using APIs instead of parsing raw file systems. 
